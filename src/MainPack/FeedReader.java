@@ -51,8 +51,6 @@ public class FeedReader {
 
     }
 
-    //TeST
-
     public void printTitle() {
 
         for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
