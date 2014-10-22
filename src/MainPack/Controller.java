@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -21,13 +20,11 @@ public class Controller
         implements Initializable {
 
     @FXML
-    private Button searchButton;
+    private Button searchButton, downloadButton;
     @FXML
     private TextField nameText;
     @FXML
     private ComboBox torrentComboBox;
-    @FXML
-    private Hyperlink downloadLabel;
 
 
     @Override // This method is called by the FXMLLoader when initialization is complete
@@ -38,11 +35,12 @@ public class Controller
             @Override
             public void handle(ActionEvent event) {
                 readFeed(nameText.getText().toString());
+
             }
         });
 
 
-        downloadLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        downloadButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex());
@@ -71,6 +69,10 @@ public class Controller
         ObservableList<String> movieList = FXCollections.observableArrayList(RSS.createMovieList());
         torrentComboBox.setItems(movieList);
         torrentComboBox.getSelectionModel().select(0);
+        if (movieList.size() > 0)
+            downloadButton.setDisable(false);
+        else
+            downloadButton.setDisable(true);
 
 
     }
