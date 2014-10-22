@@ -6,33 +6,29 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 
 public class FeedReader {
 
-    private String movieName;
-    private int movieQuality;
+    private String torrentName;
     private SyndFeed feed = null;
+    private ArrayList<String> magnetLinkList;
 
-    public FeedReader(String movieName, int movieQuality) {
-        this.movieName = movieName;
-        this.movieQuality = movieQuality;
+
+    public FeedReader(String movieName) {
+        this.torrentName = movieName;
         readPrint();
     }
 
     public SyndFeed readPrint() {
-        boolean ok = false;
         SyndFeedInput input = new SyndFeedInput();
 
 
         try {
-            URL feedUrl = new URL("https://yts.re/rss/" + movieName + "/"+movieQuality+"p/All/0");
-
+            URL feedUrl = new URL("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
             feed = input.build(new XmlReader(feedUrl));
-            ok = true;
-
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -40,24 +36,27 @@ public class FeedReader {
         }
 
 
-        if (!ok) {
-            System.out.println();
-            System.out.println("FeedReader reads and prints any RSS/Atom feed type.");
-            System.out.println("The first parameter must be the URL of the feed to read.");
-            System.out.println();
-        }
-
         return feed;
 
     }
 
-    public void printTitle() {
+    public ArrayList<String> createMovieList() {
+
+        ArrayList<String> torrentNameList = new ArrayList<String>();
+        magnetLinkList = new ArrayList<String>();
+        TorrentData torrentData = TorrentData.getInstance();
+
 
         for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
             SyndEntry entry = (SyndEntry) i.next();
-            System.out.println(entry.getTitle());
+            torrentNameList.add(entry.getTitle());
+            magnetLinkList.add(entry.getLink());
         }
 
+        torrentData.setTorrentLinkList(torrentNameList);
+        torrentData.setMagnetLinkList(magnetLinkList);
+
+        return torrentNameList;
     }
 
 
