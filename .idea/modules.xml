@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TorrentsDownloader.iml" filepath="$PROJECT_DIR$/TorrentsDownloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QuickBit.iml" filepath="$PROJECT_DIR$/QuickBit.iml" />
     </modules>
   </component>
 </project>

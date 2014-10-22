@@ -8,7 +8,19 @@ import java.util.ArrayList;
 public class TorrentData {
 
     private ArrayList<String> torrentLinkList, magnetLinkList;
+    boolean usingFallbackRSSFeed = false;
     private static TorrentData currentInstance = null;
+
+    public boolean isUsingFallbackRSSFeed() {
+        return usingFallbackRSSFeed;
+    }
+
+    public void setUsingFallbackRSSFeed(boolean usingFallbackRSSFeed) {
+        this.usingFallbackRSSFeed = usingFallbackRSSFeed;
+    }
+
+
+
 
     public ArrayList<String> getMagnetLinkList() {
         return magnetLinkList;

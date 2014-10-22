@@ -19,6 +19,6 @@
                 <Button fx:id="downloadButton" disable="true" layoutX="99.0" layoutY="101.0" mnemonicParsing="false"
                         text="Download"/>
             </children>
-      </Pane>
-   </children>
+        </Pane>
+    </children>
 </StackPane>

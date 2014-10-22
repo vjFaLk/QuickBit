@@ -3,6 +3,7 @@ package MainPack;
 import uriSchemeHandler.CouldNotOpenUriSchemeHandler;
 import uriSchemeHandler.URISchemeHandler;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -12,7 +13,7 @@ import java.net.URISyntaxException;
 public class LinkHandler {
 
 
-    public void openPage(String magnetLink) {
+    public void openMagnetLink(String magnetLink) {
         URI magnetLinkUri = null;
         magnetLink = magnetLink.substring(0, magnetLink.length() - 4);
         try {
@@ -26,6 +27,21 @@ public class LinkHandler {
         } catch (CouldNotOpenUriSchemeHandler couldNotOpenUriSchemeHandler) {
             couldNotOpenUriSchemeHandler.printStackTrace();
         }
+    }
+
+    public void openWebLink(String webPageLink) {
+        URI link = null;
+        try {
+            link = new URI(webPageLink);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        try {
+            java.awt.Desktop.getDesktop().browse(link);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
