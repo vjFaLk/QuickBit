@@ -6,10 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,16 +27,17 @@ public class Controller
     private TextField nameText;
     @FXML
     private ComboBox torrentComboBox;
+    @FXML
+    private StackPane stackPane;
 
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-
-
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                readFeed(nameText.getText().toString());
+                final String torrentName = nameText.getText();
+                readFeed(torrentName);
 
             }
         });
@@ -48,33 +51,38 @@ public class Controller
         });
 
 
-
     }
 
     private void openMagnetLink(int selectedIndex) {
         ArrayList<String> tempList;
         TorrentData torrentData = TorrentData.getInstance();
         tempList = torrentData.getMagnetLinkList();
-        String torrentName = tempList.get(selectedIndex).toString();
+        String torrentName = tempList.get(selectedIndex);
         LinkHandler linkHandler = new LinkHandler();
         linkHandler.openPage(torrentName);
-
-
     }
 
 
     private void readFeed(String torrentName) {
-        FeedReader RSS = new FeedReader(torrentName);
-        RSS.createMovieList();
-        ObservableList<String> movieList = FXCollections.observableArrayList(RSS.createMovieList());
-        torrentComboBox.setItems(movieList);
+        FeedReader feedReader = new FeedReader(torrentName);
+        ObservableList<String> torrentList = FXCollections.observableArrayList(feedReader.createTorrentList());
+        torrentComboBox.setItems(torrentList);
         torrentComboBox.getSelectionModel().select(0);
-        if (movieList.size() > 0)
+        if (torrentList.size() > 0)
             downloadButton.setDisable(false);
         else
             downloadButton.setDisable(true);
 
+    }
 
+    private void showWaitingCursor() {
+        stackPane.setCursor(Cursor.WAIT);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        stackPane.setCursor(Cursor.DEFAULT);
     }
 
 }

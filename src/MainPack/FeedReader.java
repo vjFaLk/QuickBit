@@ -14,17 +14,16 @@ public class FeedReader {
 
     private String torrentName;
     private SyndFeed feed = null;
-    private ArrayList<String> magnetLinkList;
+    private ArrayList<String> magnetLinkList, torrentNameList;
 
 
-    public FeedReader(String movieName) {
-        this.torrentName = movieName;
+    public FeedReader(String torrentName) {
+        this.torrentName = torrentName;
         readPrint();
     }
 
     public SyndFeed readPrint() {
         SyndFeedInput input = new SyndFeedInput();
-
 
         try {
             URL feedUrl = new URL("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
@@ -40,12 +39,11 @@ public class FeedReader {
 
     }
 
-    public ArrayList<String> createMovieList() {
+    public ArrayList<String> createTorrentList() {
 
-        ArrayList<String> torrentNameList = new ArrayList<String>();
+        torrentNameList = new ArrayList<String>();
         magnetLinkList = new ArrayList<String>();
         TorrentData torrentData = TorrentData.getInstance();
-
 
         for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
             SyndEntry entry = (SyndEntry) i.next();
@@ -57,6 +55,10 @@ public class FeedReader {
         torrentData.setMagnetLinkList(magnetLinkList);
 
         return torrentNameList;
+    }
+
+    private void iterateFeed() {
+
     }
 
 

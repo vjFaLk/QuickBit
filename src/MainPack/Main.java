@@ -10,13 +10,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("mainLayout.fxml"));
         primaryStage.setTitle("Torrent Downloader");
         primaryStage.setScene(new Scene(root, 300, 140));
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("download.png")));
-
-
         primaryStage.show();
     }
 
