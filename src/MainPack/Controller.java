@@ -68,7 +68,9 @@ public class Controller
 
     private void readFeed(String torrentName) {
         FeedReader feedReader = new FeedReader(torrentName);
-        ObservableList<String> torrentList = FXCollections.observableArrayList(feedReader.createTorrentList());
+        feedReader.Initialize();
+        TorrentData torrentData = TorrentData.getInstance();
+        ObservableList<String> torrentList = FXCollections.observableArrayList(torrentData.getTorrentLinkList());
         torrentComboBox.setItems(torrentList);
         torrentComboBox.getSelectionModel().select(0);
         if (torrentList.size() > 0)

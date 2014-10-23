@@ -1,43 +1,44 @@
 package MainPack;
 
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
+import RSSParser.Feed;
+import RSSParser.FeedMessage;
+import RSSParser.RSSFeedParser;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 public class FeedReader {
 
     private String torrentName;
-    private SyndFeed feed = null;
-    private ArrayList<String> magnetLinkList, torrentNameList;
+    private Feed feed;
+    private ArrayList<String> magnetLinkList, torrentNameList, torrentSeedList, torrentLeechList, torrentSizeList;
 
 
     public FeedReader(String torrentName) {
         this.torrentName = torrentName;
-        readPrint();
     }
 
-    public SyndFeed readPrint() {
-        SyndFeedInput input = new SyndFeedInput();
+    public void Initialize() {
+        readPrint();
+        createTorrentList();
+    }
+
+    public Feed readPrint() {
+        RSSFeedParser parser = null;
         TorrentData torrentData = TorrentData.getInstance();
 
         try {
             if (checkAvailability()) {
-                URL feedUrl = new URL("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
-                feed = input.build(new XmlReader(feedUrl));
+                parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
+                feed = parser.readFeed();
             } else {
-                URL feedUrl = new URL("http://torrentz.eu/feed?q=" + torrentName);
-                feed = input.build(new XmlReader(feedUrl));
+                parser = new RSSFeedParser("http://torrentz.eu/feed?q=" + torrentName);
+                feed = parser.readFeed();
                 torrentData.setUsingFallbackRSSFeed(true);
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -47,22 +48,34 @@ public class FeedReader {
 
     }
 
-    public ArrayList<String> createTorrentList() {
+    public void createTorrentList() {
 
-        torrentNameList = new ArrayList<String>();
-        magnetLinkList = new ArrayList<String>();
+        torrentNameList = new ArrayList<>();
+        magnetLinkList = new ArrayList<>();
+        torrentSizeList = new ArrayList<>();
+        torrentSeedList = new ArrayList<>();
+        torrentLeechList = new ArrayList<>();
+
+
         TorrentData torrentData = TorrentData.getInstance();
 
-        for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
-            SyndEntry entry = (SyndEntry) i.next();
-            torrentNameList.add(entry.getTitle());
-            magnetLinkList.add(entry.getLink());
+        for (FeedMessage message : feed.getMessages()) {
+
+            torrentNameList.add(message.getTitle());
+            magnetLinkList.add(message.getLink());
+            torrentSeedList.add(message.getSeeds());
+            torrentLeechList.add(message.getLeeches());
+            torrentSizeList.add(message.getSize());
+
         }
 
         torrentData.setTorrentLinkList(torrentNameList);
         torrentData.setMagnetLinkList(magnetLinkList);
+        torrentData.setTorrentSizeList(torrentSizeList);
+        torrentData.setTorrentSeedList(torrentSeedList);
+        torrentData.setTorrentLeechList(torrentLeechList);
 
-        return torrentNameList;
+
     }
 
     private boolean checkAvailability() throws IOException {

@@ -7,13 +7,45 @@ import java.util.ArrayList;
  */
 public class TorrentData {
 
-    private ArrayList<String> torrentLinkList, magnetLinkList;
+    private ArrayList<String> magnetLinkList;
+    private ArrayList<String> torrentLinkList;
+    private ArrayList<String> torrentSeedList;
+    private ArrayList<String> torrentLeechList;
+    private ArrayList<String> torrentSizeList;
+
+    public ArrayList<String> getTorrentSeedList() {
+        return torrentSeedList;
+    }
+
+    public void setTorrentSeedList(ArrayList<String> torrentSeedList) {
+        this.torrentSeedList = torrentSeedList;
+    }
+
+    public ArrayList<String> getTorrentLeechList() {
+        return torrentLeechList;
+    }
+
+    public void setTorrentLeechList(ArrayList<String> torrentLeechList) {
+        this.torrentLeechList = torrentLeechList;
+    }
+
+    public ArrayList<String> getTorrentSizeList() {
+        return torrentSizeList;
+    }
+
+    public void setTorrentSizeList(ArrayList<String> torrentSizeList) {
+        this.torrentSizeList = torrentSizeList;
+    }
+
+
     boolean usingFallbackRSSFeed = false;
     private static TorrentData currentInstance = null;
+
 
     public boolean isUsingFallbackRSSFeed() {
         return usingFallbackRSSFeed;
     }
+
 
     public void setUsingFallbackRSSFeed(boolean usingFallbackRSSFeed) {
         this.usingFallbackRSSFeed = usingFallbackRSSFeed;
