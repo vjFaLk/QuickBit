@@ -6,6 +6,7 @@ import RSSParser.RSSFeedParser;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -14,7 +15,8 @@ public class FeedReader {
 
     private String torrentName;
     private Feed feed;
-    private ArrayList<String> magnetLinkList, torrentNameList, torrentSeedList, torrentLeechList, torrentSizeList;
+    private ArrayList<String> magnetLinkList, torrentNameList, torrentSeedList, torrentLeechList, torrentSizeList, torrentDescriptionList;
+    private boolean UsingBackupRSS;
 
 
     public FeedReader(String torrentName) {
@@ -22,6 +24,7 @@ public class FeedReader {
     }
 
     public void Initialize() {
+        checkAvailability();
         readPrint();
         createTorrentList();
     }
@@ -31,10 +34,11 @@ public class FeedReader {
         TorrentData torrentData = TorrentData.getInstance();
 
         try {
-            if (checkAvailability()) {
+            if (UsingBackupRSS) {
                 parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
                 feed = parser.readFeed();
             } else {
+                torrentName = torrentName.replace(' ', '+');
                 parser = new RSSFeedParser("http://torrentz.eu/feed?q=" + torrentName);
                 feed = parser.readFeed();
                 torrentData.setUsingFallbackRSSFeed(true);
@@ -55,6 +59,7 @@ public class FeedReader {
         torrentSizeList = new ArrayList<>();
         torrentSeedList = new ArrayList<>();
         torrentLeechList = new ArrayList<>();
+        torrentDescriptionList = new ArrayList<>();
 
 
         TorrentData torrentData = TorrentData.getInstance();
@@ -66,31 +71,44 @@ public class FeedReader {
             torrentSeedList.add(message.getSeeds());
             torrentLeechList.add(message.getLeeches());
             torrentSizeList.add(message.getSize());
-
+            torrentDescriptionList.add(removeHashText(message.getDescription()));
         }
+
 
         torrentData.setTorrentLinkList(torrentNameList);
         torrentData.setMagnetLinkList(magnetLinkList);
         torrentData.setTorrentSizeList(torrentSizeList);
         torrentData.setTorrentSeedList(torrentSeedList);
         torrentData.setTorrentLeechList(torrentLeechList);
-
+        torrentData.setTorrentDescriptionList(torrentDescriptionList);
 
     }
 
-    private boolean checkAvailability() throws IOException {
-
-        final URL url = new URL("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
-        HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-        int responseCode = huc.getResponseCode();
-
-
-        if (responseCode == 200) {
-            return true;
-        } else {
-            return false;
+    private String removeHashText(String Description) {
+        if (!UsingBackupRSS) {
+            Description = Description.substring(0, Description.length() - 46);
         }
+        return Description;
     }
 
+    private void checkAvailability() {
+
+        try {
+            final URL url = new URL("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
+            HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+            int responseCode = huc.getResponseCode();
+            if (responseCode == 200) {
+                UsingBackupRSS = false;
+            } else {
+                UsingBackupRSS = false;
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
+
+}
 

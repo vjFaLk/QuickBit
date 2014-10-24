@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("mainLayout.fxml"));
         primaryStage.setTitle("QuickBit");
-        primaryStage.setScene(new Scene(root, 300, 140));
+        primaryStage.setScene(new Scene(root, 300, 160));
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("download.png")));
         primaryStage.show();
     }

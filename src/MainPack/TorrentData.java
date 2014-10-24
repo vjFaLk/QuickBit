@@ -12,6 +12,17 @@ public class TorrentData {
     private ArrayList<String> torrentSeedList;
     private ArrayList<String> torrentLeechList;
     private ArrayList<String> torrentSizeList;
+    private ArrayList<String> torrentDescriptionList;
+    boolean usingFallbackRSSFeed = false;
+    private static TorrentData currentInstance = null;
+
+    public ArrayList<String> getTorrentDescriptionList() {
+        return torrentDescriptionList;
+    }
+
+    public void setTorrentDescriptionList(ArrayList<String> torrentDescriptionList) {
+        this.torrentDescriptionList = torrentDescriptionList;
+    }
 
     public ArrayList<String> getTorrentSeedList() {
         return torrentSeedList;
@@ -37,11 +48,6 @@ public class TorrentData {
         this.torrentSizeList = torrentSizeList;
     }
 
-
-    boolean usingFallbackRSSFeed = false;
-    private static TorrentData currentInstance = null;
-
-
     public boolean isUsingFallbackRSSFeed() {
         return usingFallbackRSSFeed;
     }
@@ -50,9 +56,6 @@ public class TorrentData {
     public void setUsingFallbackRSSFeed(boolean usingFallbackRSSFeed) {
         this.usingFallbackRSSFeed = usingFallbackRSSFeed;
     }
-
-
-
 
     public ArrayList<String> getMagnetLinkList() {
         return magnetLinkList;

@@ -2,15 +2,14 @@ package MainPack;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
@@ -29,24 +28,29 @@ public class Controller
     private ComboBox torrentComboBox;
     @FXML
     private StackPane stackPane;
+    @FXML
+    private Label descriptionLabel;
+
+    private boolean isFeedRead = false;
 
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        searchButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                final String torrentName = nameText.getText();
-                readFeed(torrentName);
+        searchButton.setOnAction(event -> {
+            final String torrentName = nameText.getText();
+            isFeedRead = false;
+            readFeed(torrentName);
+            isFeedRead = true;
 
-            }
+
         });
 
 
-        downloadButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex());
+        downloadButton.setOnMouseClicked(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
+
+        torrentComboBox.setOnAction(event -> {
+            if (isFeedRead) {
+                showDescription();
             }
         });
 
@@ -73,10 +77,27 @@ public class Controller
         ObservableList<String> torrentList = FXCollections.observableArrayList(torrentData.getTorrentLinkList());
         torrentComboBox.setItems(torrentList);
         torrentComboBox.getSelectionModel().select(0);
-        if (torrentList.size() > 0)
+        if (torrentList.size() > 0) {
             downloadButton.setDisable(false);
+            showDescription();
+        }
         else
             downloadButton.setDisable(true);
+    }
+
+    private void showDescription() {
+        TorrentData torrentData = TorrentData.getInstance();
+        int index = torrentComboBox.getSelectionModel().getSelectedIndex();
+        descriptionLabel.setAlignment(Pos.CENTER);
+        if (torrentData.getTorrentLinkList().size() > 0) {
+            if (torrentData.isUsingFallbackRSSFeed()) {
+                descriptionLabel.setText(torrentData.getTorrentDescriptionList().get(index));
+            } else {
+                descriptionLabel.setText("Size: " + torrentData.getTorrentSizeList().get(index) +
+                        "Seeds: " + torrentData.getTorrentSeedList().get(index) +
+                        "Peers: " + torrentData.getTorrentLeechList().get(index));
+            }
+        }
 
     }
 
