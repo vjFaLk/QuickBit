@@ -94,8 +94,8 @@ public class Controller
                 descriptionLabel.setText(torrentData.getTorrentDescriptionList().get(index));
             } else {
                 descriptionLabel.setText("Size: " + torrentData.getTorrentSizeList().get(index) +
-                        "Seeds: " + torrentData.getTorrentSeedList().get(index) +
-                        "Peers: " + torrentData.getTorrentLeechList().get(index));
+                        " Seeds: " + torrentData.getTorrentSeedList().get(index) +
+                        " Peers: " + torrentData.getTorrentLeechList().get(index));
             }
         }
 
