@@ -10,8 +10,9 @@ Quick and neat torrent searching and downloading tool.
 - Directly adds torrents to your BitTorrent client (Magnet link) when you click download.
 - Lightweight, less than 800 Kb in size
 - Standalone, no installation required
-- Looks nice too.
 - Multiplatform (Except for Mac, will fix later)
+- Looks nice too.
+
 
 
 Download - http://valmik.in/dl_files/QuickBit.jar
