@@ -65,8 +65,10 @@ public class Controller
         tempList = torrentData.getMagnetLinkList();
         String torrentName = tempList.get(selectedIndex);
         LinkHandler linkHandler = new LinkHandler();
-        if (torrentData.isUsingFallbackRSSFeed())
-            linkHandler.openWebLink(torrentName);
+        if (torrentData.isUsingFallbackRSSFeed()) {
+            HTMLParser parse = new HTMLParser();
+            parse.parseLink(torrentName);
+        }
         else
             linkHandler.openMagnetLink(torrentName);
     }

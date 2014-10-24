@@ -34,7 +34,7 @@ public class FeedReader {
         TorrentData torrentData = TorrentData.getInstance();
 
         try {
-            if (UsingBackupRSS) {
+            if (!UsingBackupRSS) {
                 parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
                 feed = parser.readFeed();
             } else {
@@ -85,7 +85,7 @@ public class FeedReader {
     }
 
     private String removeHashText(String Description) {
-        if (!UsingBackupRSS) {
+        if (UsingBackupRSS) {
             Description = Description.substring(0, Description.length() - 46);
         }
         return Description;
@@ -100,7 +100,7 @@ public class FeedReader {
             if (responseCode == 200) {
                 UsingBackupRSS = true;
             } else {
-                UsingBackupRSS = false;
+                UsingBackupRSS = true;
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();

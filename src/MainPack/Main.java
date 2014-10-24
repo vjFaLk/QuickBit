@@ -18,8 +18,10 @@ public class Main extends Application {
         primaryStage.setMaxWidth(300);
         primaryStage.setMinHeight(200);
         primaryStage.setMinWidth(300);
+
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("download.png")));
         primaryStage.show();
+
     }
 
 
