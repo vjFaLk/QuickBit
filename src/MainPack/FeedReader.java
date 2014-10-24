@@ -98,7 +98,7 @@ public class FeedReader {
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
             int responseCode = huc.getResponseCode();
             if (responseCode == 200) {
-                UsingBackupRSS = true;
+                UsingBackupRSS = false;
             } else {
                 UsingBackupRSS = true;
             }
