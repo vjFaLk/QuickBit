@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
 <StackPane fx:id="stackPane" maxHeight="174.0" maxWidth="300.0" minHeight="140.0" minWidth="300.0" prefHeight="174.0"
            prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="MainPack.Controller">
@@ -10,15 +11,16 @@
         <Pane maxHeight="218.0" maxWidth="268.0" minHeight="140.0" minWidth="250.0" prefHeight="218.0"
               prefWidth="268.0">
             <children>
-                <TextField fx:id="nameText" layoutX="14.0" layoutY="24.0" prefHeight="25.0" prefWidth="178.0"/>
-                <ComboBox fx:id="torrentComboBox" layoutX="16.0" layoutY="61.0" prefHeight="25.0" prefWidth="238.0"/>
-                <Button fx:id="searchButton" defaultButton="true" layoutX="202.0" layoutY="24.0" mnemonicParsing="false"
+                <TextField fx:id="nameText" layoutX="14.0" layoutY="17.0" prefHeight="25.0" prefWidth="178.0"/>
+                <ComboBox fx:id="torrentComboBox" layoutX="16.0" layoutY="52.0" prefHeight="25.0" prefWidth="238.0"/>
+                <Button fx:id="searchButton" defaultButton="true" layoutX="202.0" layoutY="17.0" mnemonicParsing="false"
                         text="Search"/>
-                <Button fx:id="downloadButton" disable="true" layoutX="99.0" layoutY="101.0" mnemonicParsing="false"
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ecf4fc" height="25.0" layoutX="15.0" layoutY="87.0"
+                           opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="238.0"/>
+                <Label fx:id="descriptionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="91.0"
+                       prefHeight="17.0" prefWidth="222.0" textAlignment="CENTER"/>
+                <Button fx:id="downloadButton" disable="true" layoutX="99.0" layoutY="124.0" mnemonicParsing="false"
                         text="Download"/>
-                <Label fx:id="descriptionLabel" layoutX="23.0" layoutY="135.0" prefHeight="17.0" prefWidth="222.0"/>
-                <Label fx:id="descriptionLabel1" alignment="CENTER" contentDisplay="CENTER" layoutY="144.0"
-                       prefHeight="17.0" prefWidth="268.0" textAlignment="CENTER"/>
             </children>
         </Pane>
     </children>

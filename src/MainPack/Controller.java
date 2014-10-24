@@ -36,6 +36,8 @@ public class Controller
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+
+
         searchButton.setOnAction(event -> {
             final String torrentName = nameText.getText();
             isFeedRead = false;
