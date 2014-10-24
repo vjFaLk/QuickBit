@@ -66,7 +66,7 @@ public class FeedReader {
 
         for (FeedMessage message : feed.getMessages()) {
 
-            torrentNameList.add(message.getTitle());
+            torrentNameList.add(message.getTitle() + " - " + message.getSize());
             magnetLinkList.add(message.getLink());
             torrentSeedList.add(message.getSeeds());
             torrentLeechList.add(message.getLeeches());
