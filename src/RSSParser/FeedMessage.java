@@ -13,7 +13,7 @@ public class FeedMessage {
     String description;
     String link;
     String size;
-    String author;
+    String pagelink;
     String guid;
 
     public String getSeeds() {
@@ -60,12 +60,12 @@ public class FeedMessage {
         this.link = link;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getPagelink() {
+        return pagelink;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setPagelink(String pagelink) {
+        this.pagelink = pagelink;
     }
 
     public String getGuid() {
@@ -88,7 +88,7 @@ public class FeedMessage {
     @Override
     public String toString() {
         return "FeedMessage [title=" + title + ", description=" + description
-                + ", link=" + link + ", author=" + author + ", guid=" + guid
+                + ", link=" + link + ", pagelink=" + pagelink + ", guid=" + guid
                 + "]";
     }
 

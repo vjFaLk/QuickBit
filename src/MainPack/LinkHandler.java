@@ -31,6 +31,7 @@ public class LinkHandler {
 
     public void openWebLink(String webPageLink) {
         URI link = null;
+        webPageLink = webPageLink.trim();
         try {
             link = new URI(webPageLink);
         } catch (URISyntaxException e) {
@@ -42,6 +43,12 @@ public class LinkHandler {
             e.printStackTrace();
         }
 
+    }
+
+    public String addSuffix(String pageLink) {
+        pageLink = pageLink.substring(6, pageLink.length());
+        pageLink = "http://fastpiratebay.eu" + pageLink;
+        return pageLink;
     }
 }
 

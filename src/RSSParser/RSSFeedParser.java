@@ -18,7 +18,7 @@ public class RSSFeedParser {
     static final String LEECHES = "peers";
     static final String SIZE = "contentLength";
     static final String LINK = "link";
-    static final String AUTHOR = "author";
+    static final String PAGELINK = "comments";
     static final String ITEM = "item";
     static final String PUB_DATE = "pubDate";
     static final String GUID = "guid";
@@ -83,7 +83,7 @@ public class RSSFeedParser {
                         case SEEDS:
                             seeds = getCharacterData(event, eventReader);
                             break;
-                        case AUTHOR:
+                        case PAGELINK:
                             author = getCharacterData(event, eventReader);
                             break;
                         case PUB_DATE:
@@ -98,7 +98,7 @@ public class RSSFeedParser {
                 } else if (event.isEndElement()) {
                     if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
                         FeedMessage message = new FeedMessage();
-                        message.setAuthor(author);
+                        message.setPagelink(author);
                         message.setDescription(description);
                         message.setGuid(guid);
                         message.setSeeds(seeds);

@@ -19,8 +19,10 @@
                            opacity="0.44" stroke="BLACK" strokeType="INSIDE" width="238.0"/>
                 <Label fx:id="descriptionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="91.0"
                        prefHeight="17.0" prefWidth="222.0" textAlignment="CENTER"/>
-                <Button fx:id="downloadButton" disable="true" layoutX="99.0" layoutY="124.0" mnemonicParsing="false"
+                <Button fx:id="downloadButton" disable="true" layoutX="138.0" layoutY="124.0" mnemonicParsing="false"
                         text="Download"/>
+                <Button fx:id="openButton" disable="true" layoutX="65.0" layoutY="124.0" mnemonicParsing="false"
+                        prefHeight="25.0" prefWidth="70.0" text="Open"/>
             </children>
         </Pane>
     </children>

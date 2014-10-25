@@ -12,8 +12,9 @@ import java.io.IOException;
  */
 public class HTMLParser {
 
-    public void parseLink(String pageLink) {
+    public String parseLink(String pageLink) {
         Document doc = null;
+        String magnetLink = null;
         try {
             doc = Jsoup.connect(pageLink).get();
 
@@ -21,16 +22,19 @@ public class HTMLParser {
             Elements links = doc.getElementsByTag("a");
             for (Element link : links) {
                 if (link.text().contains("fastpiratebay.eu")) {
-                    parseForMagnetLink(link.attr("href"));
+                    magnetLink = link.attr("href");
                     break;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+        return magnetLink;
     }
 
-    private void parseForMagnetLink(String pageLink) {
+    public void parseForMagnetLink(String pageLink) {
         Document doc = null;
         try {
             doc = Jsoup.connect(pageLink).get();

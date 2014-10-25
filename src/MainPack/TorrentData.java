@@ -8,13 +8,15 @@ import java.util.ArrayList;
 public class TorrentData {
 
     private ArrayList<String> magnetLinkList;
-    private ArrayList<String> torrentLinkList;
+    private ArrayList<String> torrentNameList;
     private ArrayList<String> torrentSeedList;
     private ArrayList<String> torrentLeechList;
     private ArrayList<String> torrentSizeList;
     private ArrayList<String> torrentDescriptionList;
+    private ArrayList<String> TorrentPageLinksList;
     boolean usingFallbackRSSFeed = false;
     private static TorrentData currentInstance = null;
+
 
     public ArrayList<String> getTorrentDescriptionList() {
         return torrentDescriptionList;
@@ -65,12 +67,12 @@ public class TorrentData {
         this.magnetLinkList = magnetLinkList;
     }
 
-    public ArrayList<String> getTorrentLinkList() {
-        return torrentLinkList;
+    public ArrayList<String> getTorrentNameList() {
+        return torrentNameList;
     }
 
-    public void setTorrentLinkList(ArrayList<String> torrentLinkList) {
-        this.torrentLinkList = torrentLinkList;
+    public void setTorrentNameList(ArrayList<String> torrentNameList) {
+        this.torrentNameList = torrentNameList;
     }
 
     public static TorrentData getInstance() {
@@ -82,4 +84,11 @@ public class TorrentData {
     }
 
 
+    public ArrayList<String> getTorrentPageLinksList() {
+        return TorrentPageLinksList;
+    }
+
+    public void setTorrentPageLinksList(ArrayList<String> torrentPageLinksList) {
+        TorrentPageLinksList = torrentPageLinksList;
+    }
 }

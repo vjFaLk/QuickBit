@@ -13,26 +13,17 @@ import java.util.ArrayList;
 
 public class FeedReader {
 
-    private String torrentName;
-    private Feed feed;
-    private ArrayList<String> magnetLinkList, torrentNameList, torrentSeedList, torrentLeechList, torrentSizeList, torrentDescriptionList;
     private boolean UsingBackupRSS;
 
 
-    public FeedReader(String torrentName) {
-        this.torrentName = torrentName;
-    }
-
-    public void Initialize() {
+    public FeedReader() {
         checkAvailability();
-        readPrint();
-        createTorrentList();
     }
 
-    public Feed readPrint() {
+    public Feed getFeed(String torrentName) {
         RSSFeedParser parser = null;
+        Feed feed = null;
         TorrentData torrentData = TorrentData.getInstance();
-
         try {
             if (!UsingBackupRSS) {
                 parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
@@ -52,35 +43,44 @@ public class FeedReader {
 
     }
 
-    public void createTorrentList() {
+    public void createTorrentDataLists(Feed feed) {
 
-        torrentNameList = new ArrayList<>();
-        magnetLinkList = new ArrayList<>();
-        torrentSizeList = new ArrayList<>();
-        torrentSeedList = new ArrayList<>();
-        torrentLeechList = new ArrayList<>();
-        torrentDescriptionList = new ArrayList<>();
+
+        ArrayList<String> NameList = new ArrayList<>();
+        ArrayList<String> MagnetLinkList = new ArrayList<>();
+        ArrayList<String> SizeList = new ArrayList<>();
+        ArrayList<String> SeedList = new ArrayList<>();
+        ArrayList<String> LeechList = new ArrayList<>();
+        ArrayList<String> DescriptionList = new ArrayList<>();
+        ArrayList<String> PageLinksList = new ArrayList<>();
 
 
         TorrentData torrentData = TorrentData.getInstance();
 
         for (FeedMessage message : feed.getMessages()) {
 
-            torrentNameList.add(message.getTitle() + " - " + message.getSize());
-            magnetLinkList.add(message.getLink());
-            torrentSeedList.add(message.getSeeds());
-            torrentLeechList.add(message.getLeeches());
-            torrentSizeList.add(message.getSize());
-            torrentDescriptionList.add(removeHashText(message.getDescription()));
+            if (UsingBackupRSS) {
+                NameList.add(message.getTitle() + " - " + message.getSize());
+                MagnetLinkList.add(message.getLink());
+                DescriptionList.add(removeHashText(message.getDescription()));
+            } else {
+                NameList.add(message.getTitle() + " - " + message.getSize());
+                MagnetLinkList.add(message.getLink());
+                SeedList.add(message.getSeeds());
+                LeechList.add(message.getLeeches());
+                SizeList.add(message.getSize());
+                PageLinksList.add(message.getPagelink());
+            }
         }
 
 
-        torrentData.setTorrentLinkList(torrentNameList);
-        torrentData.setMagnetLinkList(magnetLinkList);
-        torrentData.setTorrentSizeList(torrentSizeList);
-        torrentData.setTorrentSeedList(torrentSeedList);
-        torrentData.setTorrentLeechList(torrentLeechList);
-        torrentData.setTorrentDescriptionList(torrentDescriptionList);
+        torrentData.setTorrentNameList(NameList);
+        torrentData.setMagnetLinkList(MagnetLinkList);
+        torrentData.setTorrentSizeList(SizeList);
+        torrentData.setTorrentSeedList(SeedList);
+        torrentData.setTorrentLeechList(LeechList);
+        torrentData.setTorrentDescriptionList(DescriptionList);
+        torrentData.setTorrentPageLinksList(PageLinksList);
 
     }
 
@@ -94,7 +94,7 @@ public class FeedReader {
     private void checkAvailability() {
 
         try {
-            final URL url = new URL("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
+            final URL url = new URL("http://tf.maxters.net/pbay/search/1080p/0/7/0");
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
             int responseCode = huc.getResponseCode();
             if (responseCode == 200) {
