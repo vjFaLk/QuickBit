@@ -6,14 +6,13 @@ import RSSParser.RSSFeedParser;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 
 public class FeedReader {
 
-    private boolean UsingBackupRSS;
+    private boolean UsingBackupRSS = false;
 
 
     public FeedReader() {
@@ -21,15 +20,15 @@ public class FeedReader {
     }
 
     public Feed getFeed(String torrentName) {
-        RSSFeedParser parser = null;
+        RSSFeedParser parser;
         Feed feed = null;
         TorrentData torrentData = TorrentData.getInstance();
+        torrentName = torrentName.replace(' ', '+');
         try {
             if (!UsingBackupRSS) {
                 parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
                 feed = parser.readFeed();
             } else {
-                torrentName = torrentName.replace(' ', '+');
                 parser = new RSSFeedParser("http://torrentz.eu/feed?q=" + torrentName);
                 feed = parser.readFeed();
                 torrentData.setUsingFallbackRSSFeed(true);
@@ -60,7 +59,7 @@ public class FeedReader {
         for (FeedMessage message : feed.getMessages()) {
 
             if (UsingBackupRSS) {
-                NameList.add(message.getTitle() + " - " + message.getSize());
+                NameList.add(message.getTitle() + " - " + getSizeFromDescription(message.getDescription()));
                 MagnetLinkList.add(message.getLink());
                 DescriptionList.add(removeHashText(message.getDescription()));
             } else {
@@ -86,10 +85,28 @@ public class FeedReader {
 
     private String removeHashText(String Description) {
         if (UsingBackupRSS) {
+            if (Description.length() > 46)
             Description = Description.substring(0, Description.length() - 46);
         }
         return Description;
     }
+
+    private String getSizeFromDescription(String Description) {
+
+
+        String size = "";
+        for (int i = 0; i < Description.length(); i++) {
+            size += Description.charAt(i);
+            if (Description.charAt(i) == 'B') {
+                break;
+            }
+        }
+        size = size.substring(5, size.length());
+        return size;
+
+    }
+
+
 
     private void checkAvailability() {
 
@@ -97,13 +114,7 @@ public class FeedReader {
             final URL url = new URL("http://tf.maxters.net/pbay/search/1080p/0/7/0");
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
             int responseCode = huc.getResponseCode();
-            if (responseCode == 200) {
-                UsingBackupRSS = false;
-            } else {
-                UsingBackupRSS = true;
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            UsingBackupRSS = responseCode != 200;
         } catch (IOException e) {
             e.printStackTrace();
         }

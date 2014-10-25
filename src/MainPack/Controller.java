@@ -6,12 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,8 +25,6 @@ public class Controller
     private TextField nameText;
     @FXML
     private ComboBox torrentComboBox;
-    @FXML
-    private StackPane stackPane;
     @FXML
     private Label descriptionLabel;
 
@@ -55,9 +51,7 @@ public class Controller
             }
         });
 
-        openButton.setOnAction(event -> {
-            openPageLink(torrentComboBox.getSelectionModel().getSelectedIndex());
-        });
+        openButton.setOnAction(event -> openPageLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
 
 
     }
@@ -72,8 +66,7 @@ public class Controller
             HTMLParser parse = new HTMLParser();
             String magnetLink = parse.parseLink(torrentName);
             parse.parseForMagnetLink(magnetLink);
-        }
-        else
+        } else
             linkHandler.openMagnetLink(torrentName);
     }
 
@@ -116,8 +109,7 @@ public class Controller
             downloadButton.setDisable(false);
             openButton.setDisable(false);
             showDescription();
-        }
-        else {
+        } else {
             downloadButton.setDisable(true);
             openButton.setDisable(true);
         }
@@ -137,16 +129,6 @@ public class Controller
             }
         }
 
-    }
-
-    private void showWaitingCursor() {
-        stackPane.setCursor(Cursor.WAIT);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        stackPane.setCursor(Cursor.DEFAULT);
     }
 
 }
