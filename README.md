@@ -9,6 +9,7 @@ Quick and neat torrent searching and downloading tool.
 - The list of torrents is sorted according to number of seeds, highest having the most number of seeds.
 - Directly add torrents to your BitTorrent client (Magnet link) when you click download.
 - Or click open to open the webpage for the torrent.
+- Autocomplete based on search history
 - Lightweight, less than 800 Kb in size
 - Standalone, no installation required
 - Multiplatform (Except for Mac, will fix later)
