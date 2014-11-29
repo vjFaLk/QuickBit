@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-
-<StackPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPack.Controller">
-   <children>
-      <Pane maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0">
-         <children>
-            <Button fx:id="downloadButton" layoutX="99.0" layoutY="171.0" mnemonicParsing="false" text="Download" />
-            <TextField fx:id="nameText" layoutX="51.0" layoutY="44.0" />
-         </children>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane fx:id="stackPane" maxHeight="140.0" maxWidth="300.0" minHeight="140.0" minWidth="300.0" prefHeight="140.0"
+           prefWidth="300.0"
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPack.Controller">
+    <children>
+        <Pane maxHeight="140.0" maxWidth="268.0" minHeight="140.0" minWidth="250.0" prefHeight="140.0"
+              prefWidth="268.0">
+            <children>
+                <TextField fx:id="nameText" layoutX="14.0" layoutY="24.0" prefHeight="25.0" prefWidth="178.0"/>
+                <ComboBox fx:id="torrentComboBox" layoutX="16.0" layoutY="61.0" prefHeight="25.0" prefWidth="238.0"/>
+                <Button fx:id="searchButton" defaultButton="true" layoutX="202.0" layoutY="24.0" mnemonicParsing="false"
+                        text="Search"/>
+                <Button fx:id="downloadButton" disable="true" layoutX="99.0" layoutY="101.0" mnemonicParsing="false"
+                        text="Download"/>
+            </children>
       </Pane>
    </children>
 </StackPane>

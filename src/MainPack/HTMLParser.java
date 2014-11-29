@@ -21,7 +21,7 @@ public class HTMLParser {
 
             Elements links = doc.getElementsByTag("a");
             for (Element link : links) {
-                if (link.text().contains("fastpiratebay.eu")) {
+                if (link.text().contains("fastpiratebay")) {
                     magnetLink = link.attr("href");
                     break;
                 }

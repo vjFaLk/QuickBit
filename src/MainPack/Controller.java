@@ -9,7 +9,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class Controller
     @FXML
     private Button searchButton, downloadButton, openButton;
     @FXML
-    private TextField nameText;
+    private ComboBox nameText;
     @FXML
     private ComboBox torrentComboBox;
     @FXML
@@ -35,15 +34,25 @@ public class Controller
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
 
+        nameText.getStyleClass().add("combo-box1");
+
+        setTorrentNameComboBox();
+        new AutoCompleteComboBoxListener<>(nameText);
+
         searchButton.setOnAction(event -> {
-            final String torrentName = nameText.getText();
+            final String torrentName = nameText.getSelectionModel().getSelectedItem().toString();
             isFeedRead = false;
+            FileHandler file = new FileHandler();
+            file.addToAutoCompleteList(torrentName);
             readFeed(torrentName);
+            setTorrentNameComboBox();
             isFeedRead = true;
         });
 
 
-        downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
+        downloadButton.setOnAction(event -> {
+            openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex());
+        });
 
         torrentComboBox.setOnAction(event -> {
             if (isFeedRead) {
@@ -54,6 +63,12 @@ public class Controller
         openButton.setOnAction(event -> openPageLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
 
 
+    }
+
+    private void setTorrentNameComboBox() {
+        FileHandler file = new FileHandler();
+        ObservableList<String> torrentList = FXCollections.observableArrayList(file.getTorrentList());
+        nameText.setItems(torrentList);
     }
 
     private void openMagnetLink(int selectedIndex) {
@@ -96,6 +111,7 @@ public class Controller
         FeedReader feedReader = new FeedReader();
         Feed feed = feedReader.getFeed(torrentName);
         feedReader.createTorrentDataLists(feed);
+        // feedReader.removeDeadLinks();
         TorrentData torrentData = TorrentData.getInstance();
         ObservableList<String> torrentList = FXCollections.observableArrayList(torrentData.getTorrentNameList());
         setTorrentComboBox(torrentList);

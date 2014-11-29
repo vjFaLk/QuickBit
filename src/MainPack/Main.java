@@ -13,6 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("mainLayout.fxml"));
+
         primaryStage.setTitle("QuickBit");
 
         primaryStage.setMaxHeight(200);
@@ -20,7 +21,11 @@ public class Main extends Application {
         primaryStage.setMinHeight(200);
         primaryStage.setMinWidth(300);
 
-        primaryStage.setScene(new Scene(root, 300, 200));
+        Scene scene = new Scene(root, 300, 200);
+        scene.getStylesheets()
+                .add("MainPack/Styles.css");
+
+        primaryStage.setScene(scene);
 
 
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("download.png")));
