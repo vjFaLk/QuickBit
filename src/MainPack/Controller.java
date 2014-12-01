@@ -55,14 +55,10 @@ public class Controller
 
         new AutoCompleteComboBoxListener<>(nameText);
 
-        searchButton.setOnAction(event -> {
-            searchTorrent();
-        });
+        searchButton.setOnAction(event -> searchTorrent());
 
 
-        downloadButton.setOnAction(event -> {
-            openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex());
-        });
+        downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
 
         torrentComboBox.setOnAction(event -> {
             if (isFeedRead) {

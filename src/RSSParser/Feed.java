@@ -8,15 +8,15 @@ import java.util.List;
  */
 public class Feed {
 
-    final String title;
-    final String link;
-    final String size;
-    final String description;
-    final String seeds;
-    final String leeches;
-    final String pubDate;
+    private final String title;
+    private final String link;
+    private final String size;
+    private final String description;
+    private final String seeds;
+    private final String leeches;
+    private final String pubDate;
 
-    final List<FeedMessage> entries = new ArrayList<FeedMessage>();
+    private final List<FeedMessage> entries = new ArrayList<>();
 
     public Feed(String title, String link, String size, String description, String seeds,
                 String leeches, String pubDate) {

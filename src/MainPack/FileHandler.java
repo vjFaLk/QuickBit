@@ -7,11 +7,9 @@ import java.util.Scanner;
 /**
  * Created by V on 30/11/2014.
  */
-public class FileHandler {
+class FileHandler {
 
-    public void FileHandler() {
 
-    }
 
     public void addToAutoCompleteList(String torrentName) {
         try {
@@ -73,7 +71,7 @@ public class FileHandler {
             Scanner in = new Scanner(new FileReader("Data.dat"));
 
             while (in.hasNext()) {
-                torrentNameList.add(in.next().toString());
+                torrentNameList.add(in.next());
             }
             return torrentNameList;
         } catch (FileNotFoundException e1) {

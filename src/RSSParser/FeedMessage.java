@@ -9,12 +9,12 @@ public class FeedMessage {
      * Represents one RSS message
      */
 
-    String title;
-    String description;
-    String link;
-    String size;
-    String pagelink;
-    String guid;
+    private String title;
+    private String description;
+    private String link;
+    private String size;
+    private String pagelink;
+    private String guid;
 
     public String getSeeds() {
         return seeds;
@@ -24,7 +24,7 @@ public class FeedMessage {
         this.seeds = seeds;
     }
 
-    String seeds;
+    private String seeds;
 
     public String getLeeches() {
         return leeches;
@@ -34,7 +34,7 @@ public class FeedMessage {
         this.leeches = leeches;
     }
 
-    String leeches;
+    private String leeches;
 
     public String getTitle() {
         return title;

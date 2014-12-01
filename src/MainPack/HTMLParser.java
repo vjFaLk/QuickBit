@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by V on 24/10/2014.
  */
-public class HTMLParser {
+class HTMLParser {
 
     public String parseLink(String pageLink) {
         Document doc = null;

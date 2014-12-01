@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 /**
  * Created by V on 21/10/2014.
  */
-public class LinkHandler {
+class LinkHandler {
 
 
     public void openMagnetLink(String magnetLink) {

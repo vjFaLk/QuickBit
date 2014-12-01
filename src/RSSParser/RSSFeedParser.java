@@ -11,19 +11,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class RSSFeedParser {
-    static final String TITLE = "title";
-    static final String DESCRIPTION = "description";
+    private static final String TITLE = "title";
+    private static final String DESCRIPTION = "description";
     static final String CHANNEL = "channel";
-    static final String SEEDS = "seeds";
-    static final String LEECHES = "peers";
-    static final String SIZE = "contentLength";
-    static final String LINK = "link";
-    static final String PAGELINK = "comments";
-    static final String ITEM = "item";
-    static final String PUB_DATE = "pubDate";
-    static final String GUID = "guid";
+    private static final String SEEDS = "seeds";
+    private static final String LEECHES = "peers";
+    private static final String SIZE = "contentLength";
+    private static final String LINK = "link";
+    private static final String PAGELINK = "comments";
+    private static final String ITEM = "item";
+    private static final String PUB_DATE = "pubDate";
+    private static final String GUID = "guid";
 
-    final URL url;
+    private final URL url;
 
     public RSSFeedParser(String feedUrl) {
         try {
