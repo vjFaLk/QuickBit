@@ -25,6 +25,7 @@ public class FeedReader {
         TorrentData torrentData = TorrentData.getInstance();
         torrentName = torrentName.replace(' ', '+');
         try {
+            UsingBackupRSS = true;
             if (!UsingBackupRSS) {
                 parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
                 feed = parser.readFeed();
@@ -86,7 +87,7 @@ public class FeedReader {
     private String removeHashText(String Description) {
         if (UsingBackupRSS) {
             if (Description.length() > 46)
-            Description = Description.substring(0, Description.length() - 46);
+                Description = Description.substring(0, Description.length() - 46);
         }
         return Description;
     }
@@ -105,7 +106,6 @@ public class FeedReader {
         return size;
 
     }
-
 
 
     private void checkAvailability() {

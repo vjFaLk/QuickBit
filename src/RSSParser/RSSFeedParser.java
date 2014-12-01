@@ -69,31 +69,31 @@ public class RSSFeedParser {
                             event = eventReader.nextEvent();
                             break;
                         case TITLE:
-                            title = getCharacterData(event, eventReader);
+                            title = getCharacterData(eventReader);
                             break;
                         case DESCRIPTION:
-                            description = getCharacterData(event, eventReader);
+                            description = getCharacterData(eventReader);
                             break;
                         case LINK:
-                            link = getCharacterData(event, eventReader);
+                            link = getCharacterData(eventReader);
                             break;
                         case GUID:
-                            guid = getCharacterData(event, eventReader);
+                            guid = getCharacterData(eventReader);
                             break;
                         case SEEDS:
-                            seeds = getCharacterData(event, eventReader);
+                            seeds = getCharacterData(eventReader);
                             break;
                         case PAGELINK:
-                            author = getCharacterData(event, eventReader);
+                            author = getCharacterData(eventReader);
                             break;
                         case PUB_DATE:
-                            pubdate = getCharacterData(event, eventReader);
+                            pubdate = getCharacterData(eventReader);
                             break;
                         case LEECHES:
-                            leeches = getCharacterData(event, eventReader);
+                            leeches = getCharacterData(eventReader);
                             break;
                         case SIZE:
-                            size = getCharacterData(event, eventReader);
+                            size = getCharacterData(eventReader);
                     }
                 } else if (event.isEndElement()) {
                     if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
@@ -108,7 +108,6 @@ public class RSSFeedParser {
                         message.setTitle(title);
                         feed.getMessages().add(message);
                         event = eventReader.nextEvent();
-                        continue;
                     }
                 }
             }
@@ -118,10 +117,10 @@ public class RSSFeedParser {
         return feed;
     }
 
-    private String getCharacterData(XMLEvent event, XMLEventReader eventReader)
+    private String getCharacterData(XMLEventReader eventReader)
             throws XMLStreamException {
         String result = "";
-        event = eventReader.nextEvent();
+        XMLEvent event = eventReader.nextEvent();
         if (event instanceof Characters) {
             result = event.asCharacters().getData();
         }

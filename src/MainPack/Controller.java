@@ -3,12 +3,13 @@ package MainPack;
 import RSSParser.Feed;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class Controller
     private ComboBox torrentComboBox;
     @FXML
     private Label descriptionLabel;
+    @FXML
+    private ToggleButton autoToggle;
 
     private boolean isFeedRead = false;
 
@@ -37,16 +40,23 @@ public class Controller
         nameText.getStyleClass().add("combo-box1");
 
         setTorrentNameComboBox();
+
+        autoToggle.setSelected(true);
+
+
+        nameText.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent key) {
+                if (key.getCode().equals(KeyCode.ENTER)) {
+                    searchTorrent();
+                }
+            }
+        });
+
         new AutoCompleteComboBoxListener<>(nameText);
 
         searchButton.setOnAction(event -> {
-            final String torrentName = nameText.getSelectionModel().getSelectedItem().toString();
-            isFeedRead = false;
-            FileHandler file = new FileHandler();
-            file.addToAutoCompleteList(torrentName);
-            readFeed(torrentName);
-            setTorrentNameComboBox();
-            isFeedRead = true;
+            searchTorrent();
         });
 
 
@@ -62,7 +72,26 @@ public class Controller
 
         openButton.setOnAction(event -> openPageLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
 
+        setToolTips();
 
+
+    }
+
+    private void searchTorrent() {
+        final String torrentName = nameText.getSelectionModel().getSelectedItem().toString();
+        isFeedRead = false;
+        FileHandler file = new FileHandler();
+        file.addToAutoCompleteList(torrentName);
+        readFeed(torrentName);
+        setTorrentNameComboBox();
+        isFeedRead = true;
+    }
+
+    private void setToolTips() {
+
+        openButton.setTooltip(new Tooltip("Open the webpage for the torrent"));
+        autoToggle.setTooltip(new Tooltip("Instantly add the best torrent to your BitTorrent client"));
+        downloadButton.setTooltip(new Tooltip("Add selected torrent to your BitTorrent client"));
     }
 
     private void setTorrentNameComboBox() {
@@ -115,6 +144,10 @@ public class Controller
         TorrentData torrentData = TorrentData.getInstance();
         ObservableList<String> torrentList = FXCollections.observableArrayList(torrentData.getTorrentNameList());
         setTorrentComboBox(torrentList);
+
+        if (autoToggle.isSelected()) {
+            openMagnetLink(0);
+        }
     }
 
 
