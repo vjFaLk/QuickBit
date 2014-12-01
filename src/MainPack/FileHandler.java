@@ -70,8 +70,8 @@ class FileHandler {
             ArrayList<String> torrentNameList = new ArrayList<>();
             Scanner in = new Scanner(new FileReader("Data.dat"));
 
-            while (in.hasNext()) {
-                torrentNameList.add(in.next());
+            while (in.hasNextLine()) {
+                torrentNameList.add(in.nextLine());
             }
             return torrentNameList;
         } catch (FileNotFoundException e1) {
