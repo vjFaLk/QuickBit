@@ -14,7 +14,7 @@ public class TorrentData {
     private ArrayList<String> torrentSizeList;
     private ArrayList<String> torrentDescriptionList;
     private ArrayList<String> TorrentPageLinksList;
-    private boolean usingFallbackRSSFeed = false;
+    private boolean usingFallbackRSSFeed;
     private static TorrentData currentInstance = null;
 
 
@@ -57,6 +57,10 @@ public class TorrentData {
 
     public void setUsingFallbackRSSFeed(boolean usingFallbackRSSFeed) {
         this.usingFallbackRSSFeed = usingFallbackRSSFeed;
+    }
+
+    public boolean getUsingFallbackRSSFeed() {
+        return usingFallbackRSSFeed;
     }
 
     public ArrayList<String> getMagnetLinkList() {

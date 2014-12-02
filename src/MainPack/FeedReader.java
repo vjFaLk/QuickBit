@@ -25,7 +25,6 @@ class FeedReader {
         TorrentData torrentData = TorrentData.getInstance();
         torrentName = torrentName.replace(' ', '+');
         try {
-            UsingBackupRSS = true;
             if (!UsingBackupRSS) {
                 parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
                 feed = parser.readFeed();

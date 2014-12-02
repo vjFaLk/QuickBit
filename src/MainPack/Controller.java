@@ -27,6 +27,7 @@ public class Controller
     @FXML
     private ToggleButton autoToggle;
 
+
     private boolean isFeedRead = false;
 
 
@@ -35,15 +36,22 @@ public class Controller
 
         setSearchComboBox();
         setToolTips();
-
         setTorrentNameComboBox();
+        setAutoButton();
 
-
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                FileHandler file = new FileHandler();
+                file.setAutoSettings(autoToggle.isSelected());
+            }
+        });
         searchButton.setOnAction(event ->
         {
             descriptionLabel.setText("Searching");
             searchTorrent();
         });
+
         downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
         torrentComboBox.setOnAction(event -> {
             if (isFeedRead) {
@@ -53,7 +61,11 @@ public class Controller
 
         openButton.setOnAction(event -> openPageLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
 
+    }
 
+    private void setAutoButton() {
+        FileHandler file = new FileHandler();
+        autoToggle.setSelected(file.getAutoSetting());
     }
 
 
