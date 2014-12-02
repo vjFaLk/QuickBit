@@ -35,10 +35,11 @@ public class Controller
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
-        setSearchComboBox();
+
         setToolTips();
-        setTorrentNameComboBox();
+        resetSearchComboBox();
         setAutoButton();
+        setSearchComboBox();
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -56,9 +57,7 @@ public class Controller
 
         downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
         torrentComboBox.setOnAction(event -> {
-            if (isFeedRead) {
                 showDescription();
-            }
         });
 
         openButton.setOnAction(event -> openPageLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
@@ -88,13 +87,12 @@ public class Controller
         try {
             String torrentName = searchComboBox.getSelectionModel().getSelectedItem().toString();
             System.out.println(torrentName);
-            isFeedRead = false;
             FileHandler file = new FileHandler();
             file.addToAutoCompleteList(torrentName);
             torrentName = torrentName.replaceAll(" ", "+");
             readFeed(torrentName);
-            setTorrentNameComboBox();
-            isFeedRead = true;
+            resetSearchComboBox();
+
         } catch (NullPointerException e) {
             descriptionLabel.setText("Eh, I got nothing");
         }
@@ -108,10 +106,16 @@ public class Controller
         downloadButton.setTooltip(new Tooltip("Add selected torrent to your BitTorrent client"));
     }
 
-    private void setTorrentNameComboBox() {
+    private void resetSearchComboBox() {
         FileHandler file = new FileHandler();
         ObservableList<String> torrentList = FXCollections.observableArrayList(file.getTorrentList());
         searchComboBox.setItems(torrentList);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                torrentComboBox.requestFocus();
+            }
+        });
     }
 
     private void openMagnetLink(int selectedIndex) {

@@ -23,7 +23,7 @@ Download - http://valmik.in/dl_files/QuickBit.jar
 Technical Details 
 -------
 
-The application parses custom RSS feeds made by tf.maxters.net using a custom RSS parser and uses the URISchemeHandler Library to open magnet links in default BitTorrent clients. In the case where the tf.maxters.net RSS feeds are down, it uses the torrentz.eu RSS feeds, which doesn't provide magnet links, so the link provided is parsed for a fastpiratebay.eu link using jSoup, which again is parsed to get the magnet link, which then is opened.
+The application parses custom RSS feeds made by my web app using a custom RSS parser and uses the URISchemeHandler Library to open magnet links in default BitTorrent clients. In the case where the tf.maxters.net RSS feeds are down, it uses the torrentz.eu RSS feeds, which doesn't provide magnet links, so the link provided is parsed for a fastpiratebay.eu link using jSoup, which again is parsed to get the magnet link, which then is opened.
 
 
 Sources
@@ -31,6 +31,7 @@ Sources
 
 URISchemeHandler - https://github.com/beothorn/URISchemeHandler
 jsoup - http://jsoup.org/
+RSS4TPB - https://github.com/vjFaLk/RSS4TPB/
 
 
 Disclaimer

@@ -6,12 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Now remembers AutoSettings picked by the user.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Woo! Now using custom made RSS feed creator! &#10;&#10;Changed code (haphazardly) to make it work with the new feed. Fallback feed not removed yet.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPack/Controller.java" afterPath="$PROJECT_DIR$/src/MainPack/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPack/FeedReader.java" afterPath="$PROJECT_DIR$/src/MainPack/FeedReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPack/FileHandler.java" afterPath="$PROJECT_DIR$/src/MainPack/FileHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainPack/LinkHandler.java" afterPath="$PROJECT_DIR$/src/MainPack/LinkHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RSSParser/RSSFeedParser.java" afterPath="$PROJECT_DIR$/src/RSSParser/RSSFeedParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -75,20 +72,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainPack/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RSSFeedParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RSSParser/RSSFeedParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1657" max-vertical-offset="2278">
+            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2278">
               <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
               <folding />
             </state>
@@ -98,12 +85,14 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainPack/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.463768" vertical-offset="0" max-vertical-offset="3332">
-              <caret line="90" column="15" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.5748792" vertical-offset="629" max-vertical-offset="3400">
+              <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2131#2132#0" expanded="true" />
-                <element signature="e#2192#2193#0" expanded="true" />
+                <element signature="e#2085#2086#0" expanded="true" />
+                <element signature="e#2146#2147#0" expanded="true" />
+                <element signature="e#3368#3369#0" expanded="true" />
+                <element signature="e#3430#3431#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,8 +123,18 @@
       <file leaf-file-name="TorrentData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPack/TorrentData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="1292">
+            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1292">
               <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoCompleteComboBoxListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainPack/AutoCompleteComboBoxListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="1513">
+              <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -147,8 +146,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.366667" vertical-offset="21" max-vertical-offset="612">
-              <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+            <state vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="612">
+              <caret line="20" column="87" selection-start-line="20" selection-start-column="87" selection-end-line="20" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -157,7 +156,7 @@
       <file leaf-file-name="Styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPack/Styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
               <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
@@ -167,7 +166,7 @@
       <file leaf-file-name="FeedReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPack/FeedReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="2057">
+            <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="2057">
               <caret line="112" column="53" selection-start-line="112" selection-start-column="53" selection-end-line="112" selection-end-column="53" />
               <folding>
                 <element signature="e#309#310#0" expanded="true" />
@@ -180,8 +179,8 @@
       <file leaf-file-name="LinkHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPack/LinkHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="331" max-vertical-offset="952">
-              <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="952">
+              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -195,6 +194,7 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -203,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/MainPack/HTMLParser.java" />
         <option value="$PROJECT_DIR$/src/MainPack/DataDumper.java" />
         <option value="$PROJECT_DIR$/src/MainPack/Styles.css" />
-        <option value="$PROJECT_DIR$/src/MainPack/AutoCompleteComboBoxListener.java" />
         <option value="$PROJECT_DIR$/src/RSSParser/Feed.java" />
         <option value="$PROJECT_DIR$/src/MainPack/TorrentData.java" />
         <option value="$PROJECT_DIR$/src/MainPack/Main.java" />
@@ -212,6 +211,7 @@
         <option value="$PROJECT_DIR$/src/MainPack/mainLayout.fxml" />
         <option value="$PROJECT_DIR$/src/MainPack/LinkHandler.java" />
         <option value="$PROJECT_DIR$/src/MainPack/FeedReader.java" />
+        <option value="$PROJECT_DIR$/src/MainPack/AutoCompleteComboBoxListener.java" />
         <option value="$PROJECT_DIR$/src/MainPack/Controller.java" />
       </list>
     </option>
@@ -340,13 +340,13 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="F:/Downloads/javafx-autocomplete-field-1.0.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/PortableGit_ed44d00daa128db527396557813e7b68709ed0e2/bin/git.exe" />
     <property name="FullScreen" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
-    <property name="options.lastSelected" value="preferences.lookFeel" />
+    <property name="options.lastSelected" value="vcs.Git" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -685,7 +685,13 @@
       <option name="project" value="LOCAL" />
       <updated>1417512194531</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Woo! Now using custom made RSS feed creator! &#10;&#10;Changed code (haphazardly) to make it work with the new feed. Fallback feed not removed yet.">
+      <created>1417547209739</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1417547209739</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -790,7 +796,8 @@
     <MESSAGE value="Some code cleanup" />
     <MESSAGE value="Fixed bug in FileHandler...&#10; That caused Search ComboBox to pick separate words instead of lines" />
     <MESSAGE value="Now remembers AutoSettings picked by the user." />
-    <option name="LAST_COMMIT_MESSAGE" value="Now remembers AutoSettings picked by the user." />
+    <MESSAGE value="Woo! Now using custom made RSS feed creator! &#10;&#10;Changed code (haphazardly) to make it work with the new feed. Fallback feed not removed yet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Woo! Now using custom made RSS feed creator! &#10;&#10;Changed code (haphazardly) to make it work with the new feed. Fallback feed not removed yet." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -827,8 +834,10 @@
           <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -881,8 +890,10 @@
           <caret line="35" column="59" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -920,8 +931,10 @@
           <caret line="35" column="59" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -959,8 +972,10 @@
           <caret line="35" column="59" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -998,8 +1013,10 @@
           <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1026,8 +1043,10 @@
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1150,40 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPack/AutoCompleteComboBoxListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="811" max-vertical-offset="1598">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPack/Styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RSSParser/Feed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="1037">
-          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPack/TorrentData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="1292">
-          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPack/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
@@ -1197,16 +1182,48 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.366667" vertical-offset="21" max-vertical-offset="612">
-          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+        <state vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="612">
+          <caret line="20" column="87" selection-start-line="20" selection-start-column="87" selection-end-line="20" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPack/Styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPack/LinkHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="331" max-vertical-offset="952">
-          <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="952">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RSSParser/Feed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="1037">
+          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RSSParser/RSSFeedParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
+          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPack/AutoCompleteComboBoxListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="1513">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1221,10 +1238,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RSSParser/RSSFeedParser.java">
+    <entry file="file://$PROJECT_DIR$/src/MainPack/TorrentData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="1292">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1242,12 +1259,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPack/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.463768" vertical-offset="0" max-vertical-offset="3332">
-          <caret line="90" column="15" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.5748792" vertical-offset="629" max-vertical-offset="3400">
+          <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
           </folding>
         </state>
       </provider>
