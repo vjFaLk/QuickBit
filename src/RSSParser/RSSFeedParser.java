@@ -18,7 +18,7 @@ public class RSSFeedParser {
     private static final String LEECHES = "peers";
     private static final String SIZE = "contentLength";
     private static final String LINK = "link";
-    private static final String PAGELINK = "comments";
+    private static final String PAGELINK = "pageLink";
     private static final String ITEM = "item";
     private static final String PUB_DATE = "pubDate";
     private static final String GUID = "guid";

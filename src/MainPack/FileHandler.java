@@ -14,11 +14,6 @@ class FileHandler {
     public void addToAutoCompleteList(String torrentName) {
         try {
             File file = new File("Data.dat");
-            // if file doesnt exists, then create it
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
             if (!wordExists(torrentName)) {
                 FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
                 BufferedWriter bw = new BufferedWriter(fw);
@@ -32,7 +27,7 @@ class FileHandler {
     }
 
     public void resetAll() {
-
+        
     }
 
     public void setAutoSettings(boolean toggleOption) {
@@ -82,8 +77,8 @@ class FileHandler {
     private boolean wordExists(String torrentName) {
         try {
             Scanner in = new Scanner(new FileReader("Data.dat"));
-            while (in.hasNext()) {
-                if (in.next().equalsIgnoreCase(torrentName)) {
+            while (in.hasNextLine()) {
+                if (in.nextLine().equalsIgnoreCase(torrentName)) {
                     return true;
                 }
             }
@@ -97,6 +92,12 @@ class FileHandler {
 
     public ArrayList<String> getTorrentList() {
         try {
+            File file = new File("Data.dat");
+            // if file doesn't exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
             ArrayList<String> torrentNameList = new ArrayList<>();
             Scanner in = new Scanner(new FileReader("Data.dat"));
 
@@ -106,6 +107,8 @@ class FileHandler {
             return torrentNameList;
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return null;

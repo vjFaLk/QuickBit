@@ -1,6 +1,7 @@
 package MainPack;
 
 import RSSParser.Feed;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,8 +49,9 @@ public class Controller
         });
         searchButton.setOnAction(event ->
         {
-            descriptionLabel.setText("Searching");
             searchTorrent();
+
+
         });
 
         downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
@@ -70,25 +72,34 @@ public class Controller
 
 
     private void setSearchComboBox() {
+
         searchComboBox.getStyleClass().add("combo-box1");
         new AutoCompleteComboBoxListener<>(searchComboBox);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                searchComboBox.requestFocus();
+            }
+        });
     }
 
     private void searchTorrent() {
 
         try {
-            final String torrentName = searchComboBox.getSelectionModel().getSelectedItem().toString();
+            String torrentName = searchComboBox.getSelectionModel().getSelectedItem().toString();
+            System.out.println(torrentName);
             isFeedRead = false;
             FileHandler file = new FileHandler();
             file.addToAutoCompleteList(torrentName);
+            torrentName = torrentName.replaceAll(" ", "+");
             readFeed(torrentName);
             setTorrentNameComboBox();
             isFeedRead = true;
         } catch (NullPointerException e) {
             descriptionLabel.setText("Eh, I got nothing");
         }
-
     }
+
 
     private void setToolTips() {
 
@@ -173,15 +184,7 @@ public class Controller
         TorrentData torrentData = TorrentData.getInstance();
         int index = torrentComboBox.getSelectionModel().getSelectedIndex();
         descriptionLabel.setAlignment(Pos.CENTER);
-        if (torrentData.getTorrentNameList().size() > 0) {
-            if (torrentData.isUsingFallbackRSSFeed()) {
-                descriptionLabel.setText(torrentData.getTorrentDescriptionList().get(index));
-            } else {
-                descriptionLabel.setText("Size: " + torrentData.getTorrentSizeList().get(index) +
-                        " Seeds: " + torrentData.getTorrentSeedList().get(index) +
-                        " Peers: " + torrentData.getTorrentLeechList().get(index));
-            }
-        }
+        descriptionLabel.setText(torrentData.getTorrentDescriptionList().get(index));
 
     }
 

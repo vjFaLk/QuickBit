@@ -26,7 +26,7 @@ class FeedReader {
         torrentName = torrentName.replace(' ', '+');
         try {
             if (!UsingBackupRSS) {
-                parser = new RSSFeedParser("http://tf.maxters.net/pbay/search/" + torrentName + "/0/7/0");
+                parser = new RSSFeedParser("http://adept-bastion-742.appspot.com/" + torrentName);
                 feed = parser.readFeed();
             } else {
                 parser = new RSSFeedParser("http://torrentz.eu/feed?q=" + torrentName);
@@ -63,12 +63,10 @@ class FeedReader {
                 MagnetLinkList.add(message.getLink());
                 DescriptionList.add(removeHashText(message.getDescription()));
             } else {
-                NameList.add(message.getTitle() + " - " + message.getSize());
+                NameList.add(message.getTitle() + " - " + getSizeFromDescription(message.getDescription()));
                 MagnetLinkList.add(message.getLink());
-                SeedList.add(message.getSeeds());
-                LeechList.add(message.getLeeches());
-                SizeList.add(message.getSize());
                 PageLinksList.add(message.getPagelink());
+                DescriptionList.add(message.getDescription());
             }
         }
 

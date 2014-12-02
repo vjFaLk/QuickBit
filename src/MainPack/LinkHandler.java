@@ -46,7 +46,7 @@ class LinkHandler {
     }
 
     public String addSuffix(String pageLink) {
-        pageLink = pageLink.substring(6, pageLink.length());
+        pageLink = pageLink.substring(9, pageLink.length());
         pageLink = "http://fastpiratebay.eu" + pageLink;
         return pageLink;
     }
