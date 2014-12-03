@@ -43,6 +43,7 @@ public class Controller
         setSearchComboBox();
         setButtons();
 
+        //Adds a shutdown hook that passes the state of the AutoMode Button to be written to a file
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
@@ -54,14 +55,17 @@ public class Controller
 
 
     private void setButtons() {
+
+        // A little hack to make the focused button trigger when the Enter key is pressed
+        // Changes the default button to the one that is focused, which causes the button to change color too
         searchButton.defaultButtonProperty().bind(searchButton.focusedProperty());
         downloadButton.defaultButtonProperty().bind(downloadButton.focusedProperty());
         openButton.defaultButtonProperty().bind(openButton.focusedProperty());
 
-        searchButton.setOnAction(event ->
-                searchTorrent());
+        searchButton.setOnAction(event -> searchTorrent());
         downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
         torrentComboBox.setOnAction(event -> {
+            //Reads the description only when it's confirmed the feed has been read to prevent NullPointerExceptions
             if (isFeedRead) {
                 showDescription();
             }
@@ -94,6 +98,7 @@ public class Controller
         searchComboBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //Basically if anything from the list is selected this is triggered
                 if (searchComboBox.getSelectionModel().getSelectedIndex() != -1) {
                     autoToggle.setSelected(false);
                     searchTorrent();
@@ -106,11 +111,9 @@ public class Controller
 
         try {
             String torrentName = searchComboBox.getSelectionModel().getSelectedItem().toString();
-            System.out.println(torrentName);
             isFeedRead = false;
-            torrentName = torrentName.replaceAll(" ", "+");
             readFeed(torrentName);
-            Platform.runLater(() -> torrentComboBox.requestFocus());
+            Platform.runLater(() -> torrentComboBox.requestFocus());  //Giving focus to the ComboBox once the searching is completed.
             isFeedRead = true;
         } catch (NullPointerException e) {
             descriptionLabel.setText("Eh, I got nothing");
@@ -119,7 +122,7 @@ public class Controller
 
 
     private void setToolTips() {
-
+        //There are tooltips in the app?!
         openButton.setTooltip(new Tooltip("Open the webpage for the torrent"));
         autoToggle.setTooltip(new Tooltip("Instantly add the best torrent to your BitTorrent client"));
         downloadButton.setTooltip(new Tooltip("Add selected torrent to your BitTorrent client"));
@@ -154,6 +157,8 @@ public class Controller
         TorrentData torrentData = TorrentData.getInstance();
         ObservableList<String> torrentList = FXCollections.observableArrayList(torrentData.getTorrentNameList());
         setTorrentComboBox(torrentList);
+        // This is the amazing state of the art Independent Intelligent-O-TorrentPicker (IDIOT)
+        // It opens the topmost torrent in the list
         if (autoToggle.isSelected()) {
             openMagnetLink(0);
         }

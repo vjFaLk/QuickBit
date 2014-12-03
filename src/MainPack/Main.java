@@ -27,7 +27,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("download.png")));
         primaryStage.show();
-
     }
 
 

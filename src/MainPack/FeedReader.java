@@ -9,14 +9,12 @@ import java.util.ArrayList;
 
 class FeedReader {
 
-    private boolean UsingBackupRSS = false;
-
-
     public Feed getFeed(String torrentName) {
         RSSFeedParser parser;
         Feed feed = null;
-        torrentName = torrentName.replace(' ', '+');
+        torrentName = torrentName.replaceAll(" ", "+"); // Spaces don't work so well in URLS you see
         try {
+            //Using my own RSS Feed Generator
             parser = new RSSFeedParser("http://adept-bastion-742.appspot.com/" + torrentName);
             feed = parser.readFeed();
 
@@ -29,7 +27,6 @@ class FeedReader {
     }
 
     public void createTorrentDataLists(Feed feed) {
-
 
         ArrayList<String> NameList = new ArrayList<>();
         ArrayList<String> MagnetLinkList = new ArrayList<>();
@@ -65,20 +62,6 @@ class FeedReader {
         return size;
 
     }
-
-
-//    private void checkAvailability() {
-//
-//        try {
-//            final URL url = new URL("http://adept-bastion-742.appspot.com/test");
-//            HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-//            int responseCode = huc.getResponseCode();
-//            UsingBackupRSS = responseCode != 200;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
 
 }
 

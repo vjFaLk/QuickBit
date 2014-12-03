@@ -15,7 +15,6 @@ class LinkHandler {
 
     public void openMagnetLink(String magnetLink) {
         URI magnetLinkUri = null;
-        magnetLink = magnetLink.substring(0, magnetLink.length() - 4);
         try {
             magnetLinkUri = new URI(magnetLink);
         } catch (URISyntaxException e) {
@@ -45,6 +44,7 @@ class LinkHandler {
 
     }
 
+    //Using a proxy to display PirateBay page for people who cannot access the website directly.
     public String addSuffix(String pageLink) {
         pageLink = pageLink.substring(9, pageLink.length());
         pageLink = "http://fastpiratebay.eu" + pageLink;

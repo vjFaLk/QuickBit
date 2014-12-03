@@ -10,25 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://F:/Downloads/jdom-1.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://F:/Downloads/URISchemeHandler-1.7.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../commons-io-1.3.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -46,7 +28,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://F:/Downloads/jsoup-1.8.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../commons-io-1.3.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://F:/Downloads/jdom-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -54,4 +45,3 @@
     </orderEntry>
   </component>
 </module>
-
