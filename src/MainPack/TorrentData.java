@@ -14,7 +14,7 @@ public class TorrentData {
     private ArrayList<String> torrentSizeList;
     private ArrayList<String> torrentDescriptionList;
     private ArrayList<String> TorrentPageLinksList;
-    private boolean usingFallbackRSSFeed;
+    private boolean usingFallbackRSSFeed = false;
     private static TorrentData currentInstance = null;
 
 

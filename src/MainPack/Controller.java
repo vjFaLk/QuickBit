@@ -57,7 +57,9 @@ public class Controller
 
         downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
         torrentComboBox.setOnAction(event -> {
+            if (isFeedRead) {
                 showDescription();
+            }
         });
 
         openButton.setOnAction(event -> openPageLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
@@ -87,12 +89,13 @@ public class Controller
         try {
             String torrentName = searchComboBox.getSelectionModel().getSelectedItem().toString();
             System.out.println(torrentName);
+            isFeedRead = false;
             FileHandler file = new FileHandler();
             file.addToAutoCompleteList(torrentName);
             torrentName = torrentName.replaceAll(" ", "+");
             readFeed(torrentName);
             resetSearchComboBox();
-
+            isFeedRead = true;
         } catch (NullPointerException e) {
             descriptionLabel.setText("Eh, I got nothing");
         }

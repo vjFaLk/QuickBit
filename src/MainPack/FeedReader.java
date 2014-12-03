@@ -25,10 +25,12 @@ class FeedReader {
         TorrentData torrentData = TorrentData.getInstance();
         torrentName = torrentName.replace(' ', '+');
         try {
+
             if (!UsingBackupRSS) {
                 parser = new RSSFeedParser("http://adept-bastion-742.appspot.com/" + torrentName);
                 feed = parser.readFeed();
             } else {
+                System.out.println("Using Backup RSS!");
                 parser = new RSSFeedParser("http://torrentz.eu/feed?q=" + torrentName);
                 feed = parser.readFeed();
                 torrentData.setUsingFallbackRSSFeed(true);
@@ -108,7 +110,7 @@ class FeedReader {
     private void checkAvailability() {
 
         try {
-            final URL url = new URL("http://tf.maxters.net/pbay/search/1080p/0/7/0");
+            final URL url = new URL("http://adept-bastion-742.appspot.com/test");
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
             int responseCode = huc.getResponseCode();
             UsingBackupRSS = responseCode != 200;

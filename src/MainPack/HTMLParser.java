@@ -38,8 +38,6 @@ class HTMLParser {
         Document doc = null;
         try {
             doc = Jsoup.connect(pageLink).get();
-
-
             Elements links = doc.getElementsByTag("a");
             for (Element link : links) {
                 if (link.attr("href").contains("magnet:")) {
