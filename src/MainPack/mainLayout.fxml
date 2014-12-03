@@ -8,7 +8,7 @@
            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPack.Controller">
     <Pane maxHeight="218.0" maxWidth="268.0" minHeight="140.0" minWidth="250.0" prefHeight="218.0"
           prefWidth="268.0">
-        <TextField fx:id="searchText" editable="true" layoutX="14.0" layoutY="17.0" prefHeight="25.0"
+        <ComboBox fx:id="searchComboBox" editable="true" layoutX="14.0" layoutY="17.0" prefHeight="25.0"
                   prefWidth="178.0"/>
         <Button fx:id="searchButton" layoutX="202.0" layoutY="17.0" mnemonicParsing="false"
                 text="Search"/>

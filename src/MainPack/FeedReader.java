@@ -17,8 +17,8 @@ class FeedReader {
         Feed feed = null;
         torrentName = torrentName.replace(' ', '+');
         try {
-                parser = new RSSFeedParser("http://adept-bastion-742.appspot.com/" + torrentName);
-                feed = parser.readFeed();
+            parser = new RSSFeedParser("http://adept-bastion-742.appspot.com/" + torrentName);
+            feed = parser.readFeed();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -39,11 +39,11 @@ class FeedReader {
 
         for (FeedMessage message : feed.getMessages()) {
 
-                NameList.add(message.getTitle() + " - " + getSizeFromDescription(message.getDescription()));
-                MagnetLinkList.add(message.getLink());
-                PageLinksList.add(message.getPagelink());
-                DescriptionList.add(message.getDescription());
-            }
+            NameList.add(message.getTitle() + " - " + getSizeFromDescription(message.getDescription()));
+            MagnetLinkList.add(message.getLink());
+            PageLinksList.add(message.getPagelink());
+            DescriptionList.add(message.getDescription());
+        }
 
         torrentData.setTorrentNameList(NameList);
         torrentData.setMagnetLinkList(MagnetLinkList);

@@ -4,13 +4,12 @@ import RSSParser.Feed;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class Controller
     @FXML
     private Button searchButton, downloadButton, openButton;
     @FXML
-    private TextField searchText;
+    private ComboBox searchComboBox;
     @FXML
     private ComboBox torrentComboBox;
     @FXML
@@ -79,13 +78,24 @@ public class Controller
 
     private void setSearchComboBox() {
 
-        searchText.getStyleClass().add("combo-box1");
-        Platform.runLater(() -> searchText.requestFocus());
+        searchComboBox.getStyleClass().add("combo-box1");
+        Platform.runLater(() -> searchComboBox.requestFocus());
 
-        searchText.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        ObservableList<String> options =
+                FXCollections.observableArrayList(
+                        "Movies",
+                        "Games",
+                        "TV",
+                        "Music"
+                );
+
+        searchComboBox.setItems(options);
+
+        searchComboBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
+            public void handle(ActionEvent event) {
+                if (searchComboBox.getSelectionModel().getSelectedIndex() != -1) {
+                    autoToggle.setSelected(false);
                     searchTorrent();
                 }
             }
@@ -95,7 +105,7 @@ public class Controller
     public void searchTorrent() {
 
         try {
-            String torrentName = searchText.getText();
+            String torrentName = searchComboBox.getSelectionModel().getSelectedItem().toString();
             System.out.println(torrentName);
             isFeedRead = false;
             torrentName = torrentName.replaceAll(" ", "+");
@@ -134,7 +144,7 @@ public class Controller
         String torrentName = tempList.get(selectedIndex);
         torrentName = linkHandler.addSuffix(torrentName);
         linkHandler.openWebLink(torrentName);
-        }
+    }
 
 
     private void readFeed(String torrentName) {
