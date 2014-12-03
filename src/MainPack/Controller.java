@@ -49,11 +49,7 @@ public class Controller
             }
         });
         searchButton.setOnAction(event ->
-        {
-            searchTorrent();
-
-
-        });
+                searchTorrent());
 
         downloadButton.setOnAction(event -> openMagnetLink(torrentComboBox.getSelectionModel().getSelectedIndex()));
         torrentComboBox.setOnAction(event -> {
@@ -76,12 +72,7 @@ public class Controller
 
         searchComboBox.getStyleClass().add("combo-box1");
         new AutoCompleteComboBoxListener<>(searchComboBox);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                searchComboBox.requestFocus();
-            }
-        });
+        Platform.runLater(() -> searchComboBox.requestFocus());
     }
 
     private void searchTorrent() {
@@ -113,12 +104,7 @@ public class Controller
         FileHandler file = new FileHandler();
         ObservableList<String> torrentList = FXCollections.observableArrayList(file.getTorrentList());
         searchComboBox.setItems(torrentList);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                torrentComboBox.requestFocus();
-            }
-        });
+        Platform.runLater(() -> torrentComboBox.requestFocus());
     }
 
     private void openMagnetLink(int selectedIndex) {
@@ -127,12 +113,7 @@ public class Controller
         tempList = torrentData.getMagnetLinkList();
         String torrentName = tempList.get(selectedIndex);
         LinkHandler linkHandler = new LinkHandler();
-        if (torrentData.isUsingFallbackRSSFeed()) {
-            HTMLParser parse = new HTMLParser();
-            String magnetLink = parse.parseLink(torrentName);
-            parse.parseForMagnetLink(magnetLink);
-        } else
-            linkHandler.openMagnetLink(torrentName);
+        linkHandler.openMagnetLink(torrentName);
     }
 
 
@@ -140,21 +121,11 @@ public class Controller
         ArrayList<String> tempList;
         TorrentData torrentData = TorrentData.getInstance();
         LinkHandler linkHandler = new LinkHandler();
-        HTMLParser parse = new HTMLParser();
-
-        if (torrentData.isUsingFallbackRSSFeed()) {
-            tempList = torrentData.getMagnetLinkList();
-            String torrentName = tempList.get(selectedIndex);
-            String pageLink = parse.parseLink(torrentName);
-            linkHandler.openWebLink(pageLink);
-        } else {
-            tempList = torrentData.getTorrentPageLinksList();
-            String torrentName = tempList.get(selectedIndex);
-            torrentName = linkHandler.addSuffix(torrentName);
-            linkHandler.openWebLink(torrentName);
+        tempList = torrentData.getTorrentPageLinksList();
+        String torrentName = tempList.get(selectedIndex);
+        torrentName = linkHandler.addSuffix(torrentName);
+        linkHandler.openWebLink(torrentName);
         }
-
-    }
 
 
     private void readFeed(String torrentName) {
@@ -192,7 +163,6 @@ public class Controller
         int index = torrentComboBox.getSelectionModel().getSelectedIndex();
         descriptionLabel.setAlignment(Pos.CENTER);
         descriptionLabel.setText(torrentData.getTorrentDescriptionList().get(index));
-
     }
 
 }

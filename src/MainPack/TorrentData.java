@@ -9,12 +9,8 @@ public class TorrentData {
 
     private ArrayList<String> magnetLinkList;
     private ArrayList<String> torrentNameList;
-    private ArrayList<String> torrentSeedList;
-    private ArrayList<String> torrentLeechList;
-    private ArrayList<String> torrentSizeList;
     private ArrayList<String> torrentDescriptionList;
     private ArrayList<String> TorrentPageLinksList;
-    private boolean usingFallbackRSSFeed = false;
     private static TorrentData currentInstance = null;
 
 
@@ -24,43 +20,6 @@ public class TorrentData {
 
     public void setTorrentDescriptionList(ArrayList<String> torrentDescriptionList) {
         this.torrentDescriptionList = torrentDescriptionList;
-    }
-
-    public ArrayList<String> getTorrentSeedList() {
-        return torrentSeedList;
-    }
-
-    public void setTorrentSeedList(ArrayList<String> torrentSeedList) {
-        this.torrentSeedList = torrentSeedList;
-    }
-
-    public ArrayList<String> getTorrentLeechList() {
-        return torrentLeechList;
-    }
-
-    public void setTorrentLeechList(ArrayList<String> torrentLeechList) {
-        this.torrentLeechList = torrentLeechList;
-    }
-
-    public ArrayList<String> getTorrentSizeList() {
-        return torrentSizeList;
-    }
-
-    public void setTorrentSizeList(ArrayList<String> torrentSizeList) {
-        this.torrentSizeList = torrentSizeList;
-    }
-
-    public boolean isUsingFallbackRSSFeed() {
-        return usingFallbackRSSFeed;
-    }
-
-
-    public void setUsingFallbackRSSFeed(boolean usingFallbackRSSFeed) {
-        this.usingFallbackRSSFeed = usingFallbackRSSFeed;
-    }
-
-    public boolean getUsingFallbackRSSFeed() {
-        return usingFallbackRSSFeed;
     }
 
     public ArrayList<String> getMagnetLinkList() {
@@ -83,10 +42,8 @@ public class TorrentData {
         if (currentInstance == null) {
             currentInstance = new TorrentData();
         }
-
         return currentInstance;
     }
-
 
     public ArrayList<String> getTorrentPageLinksList() {
         return TorrentPageLinksList;

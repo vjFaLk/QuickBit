@@ -105,8 +105,6 @@ class FileHandler {
                 torrentNameList.add(in.nextLine());
             }
             return torrentNameList;
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
