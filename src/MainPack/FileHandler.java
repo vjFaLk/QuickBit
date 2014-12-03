@@ -1,7 +1,6 @@
 package MainPack;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -9,26 +8,6 @@ import java.util.Scanner;
  */
 class FileHandler {
 
-
-
-    public void addToAutoCompleteList(String torrentName) {
-        try {
-            File file = new File("Data.dat");
-            if (!wordExists(torrentName)) {
-                FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
-                BufferedWriter bw = new BufferedWriter(fw);
-                bw.write(torrentName + "\n");
-                bw.close();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void resetAll() {
-        
-    }
 
     public void setAutoSettings(boolean toggleOption) {
         File file = new File("config.cfg");
@@ -72,44 +51,6 @@ class FileHandler {
         }
 
         return true;
-    }
-
-    private boolean wordExists(String torrentName) {
-        try {
-            Scanner in = new Scanner(new FileReader("Data.dat"));
-            while (in.hasNextLine()) {
-                if (in.nextLine().equalsIgnoreCase(torrentName)) {
-                    return true;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-
-    public ArrayList<String> getTorrentList() {
-        try {
-            File file = new File("Data.dat");
-            // if file doesn't exists, then create it
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            ArrayList<String> torrentNameList = new ArrayList<>();
-            Scanner in = new Scanner(new FileReader("Data.dat"));
-
-            while (in.hasNextLine()) {
-                torrentNameList.add(in.nextLine());
-            }
-            return torrentNameList;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
 }

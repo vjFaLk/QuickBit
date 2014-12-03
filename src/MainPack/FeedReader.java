@@ -35,8 +35,6 @@ class FeedReader {
         ArrayList<String> MagnetLinkList = new ArrayList<>();
         ArrayList<String> DescriptionList = new ArrayList<>();
         ArrayList<String> PageLinksList = new ArrayList<>();
-
-
         TorrentData torrentData = TorrentData.getInstance();
 
         for (FeedMessage message : feed.getMessages()) {

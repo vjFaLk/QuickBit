@@ -1,14 +1,15 @@
- .combo-box1 .arrow-button{
-     -fx-background-color: white;
-         -fx-cursor: text;
- }
+.combo-box1:focused {
+ -fx-focus-color: black;
+ -fx-background-insets: -1.4, 0, 1, 2;
+ -fx-background-radius: 5, 4, 3;}
 
- .combo-box1:focused {
-  -fx-focus-color: black;
-   -fx-background-insets: -1.4, 0, 1, 2;
-   -fx-background-radius: 5, 4, 3;}
+.combo-box:focused {
+ -fx-focus-color: black;
+ -fx-background-insets: -1.4, 0, 1, 2;
+ -fx-background-radius: 5, 4, 3;}
 
-    .combo-box:focused {
-     -fx-focus-color: black;
-      -fx-background-insets: -1.4, 0, 1, 2;
-      -fx-background-radius: 5, 4, 3;}
+.button:focused {
+-fx-focus-color: black;
+ -fx-background-insets: -1.4, 0, 1, 2;
+ -fx-background-radius: 5, 4, 3;}
+}
