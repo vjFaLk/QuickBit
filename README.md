@@ -9,10 +9,10 @@ Quick and neat torrent searching and downloading tool.
 - The list of torrents is sorted according to number of seeds, highest having the most number of seeds.
 - Directly add torrents to your BitTorrent client (Magnet link) when you click download.
 - Or click open to open the webpage for the torrent.
-- Autocomplete based on search history
-- Lightweight, less than 800 Kb in size
+- AutoMode, picks the torrent with the higest seeds and adds it as you search (Can be toggled)
+- Lightweight, around 800 Kb in size
 - Standalone, no installation required
-- Multiplatform (Except for Mac, will fix later)
+- Multiplatform (Magnet links don't open on Mac)
 - Looks nice too.
 
 
@@ -23,7 +23,7 @@ Download - http://valmik.in/dl_files/QuickBit.jar
 Technical Details 
 -------
 
-The application parses custom RSS feeds made by my web app using a custom RSS parser and uses the URISchemeHandler Library to open magnet links in default BitTorrent clients. In the case where the tf.maxters.net RSS feeds are down, it uses the torrentz.eu RSS feeds, which doesn't provide magnet links, so the link provided is parsed for a fastpiratebay.eu link using jSoup, which again is parsed to get the magnet link, which then is opened.
+The application parses custom RSS feeds made by my web app using a custom RSS parser and uses the URISchemeHandler Library to open magnet links in default BitTorrent clients.
 
 
 Sources
