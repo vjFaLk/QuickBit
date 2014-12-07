@@ -37,7 +37,6 @@ public class Controller
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
-
         setToolTips();
         setAutoButton();
         setSearchComboBox();
@@ -112,11 +111,11 @@ public class Controller
         try {
             String torrentName = searchComboBox.getSelectionModel().getSelectedItem().toString();
             isFeedRead = false;
-            readFeed(torrentName);
+            searchFeed(torrentName);
             Platform.runLater(() -> torrentComboBox.requestFocus());  //Giving focus to the ComboBox once the searching is completed.
             isFeedRead = true;
         } catch (NullPointerException e) {
-            descriptionLabel.setText("Eh, I got nothing");
+            descriptionLabel.setText("I got nothing");
         }
     }
 
@@ -128,6 +127,18 @@ public class Controller
         downloadButton.setTooltip(new Tooltip("Add selected torrent to your BitTorrent client"));
     }
 
+    private void setTorrentComboBox(ObservableList torrentList) {
+        if (torrentList.size() > 0) {
+            torrentComboBox.setItems(torrentList);
+            torrentComboBox.getSelectionModel().select(0);
+            downloadButton.setDisable(false);
+            openButton.setDisable(false);
+            showDescription();
+        } else {
+            downloadButton.setDisable(true);
+            openButton.setDisable(true);
+        }
+    }
 
     private void openMagnetLink(int selectedIndex) {
         ArrayList<String> tempList;
@@ -150,7 +161,7 @@ public class Controller
     }
 
 
-    private void readFeed(String torrentName) {
+    private void searchFeed(String torrentName) {
         FeedReader feedReader = new FeedReader();
         Feed feed = feedReader.getFeed(torrentName);
         feedReader.createTorrentDataLists(feed);
@@ -165,18 +176,6 @@ public class Controller
     }
 
 
-    private void setTorrentComboBox(ObservableList torrentList) {
-        torrentComboBox.setItems(torrentList);
-        torrentComboBox.getSelectionModel().select(0);
-        if (torrentList.size() > 0) {
-            downloadButton.setDisable(false);
-            openButton.setDisable(false);
-            showDescription();
-        } else {
-            downloadButton.setDisable(true);
-            openButton.setDisable(true);
-        }
-    }
 
     private void showDescription() {
         TorrentData torrentData = TorrentData.getInstance();
