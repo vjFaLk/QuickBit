@@ -10,10 +10,12 @@ Quick and neat torrent searching and downloading tool.
 - Directly add torrents to your BitTorrent client (Magnet link) when you click download.
 - Or click open to open the webpage for the torrent.
 - AutoMode, picks the torrent with the higest seeds and adds it as you search (Can be toggled)
+- Top Lists for Movies, TV, Games and Music
 - Lightweight, less than 800 Kb in size
 - Standalone, no installation required
 - Multiplatform (Magnet links don't open on Mac)
 - Looks nice too.
+
 
 
 
